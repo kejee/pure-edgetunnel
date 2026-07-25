@@ -5299,6 +5299,8 @@ async function 读取config_JSON(env, hostname, userID, UA = "Mozilla/5.0", 重�
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
+			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
+			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 		}
 	} catch (error) {
 		console.error(`读取config_JSON出错: ${error.message}`);
@@ -7004,7 +7006,7 @@ function getLoginHTML() {
 				<div id="errorMsg" class="login-error login-error-hidden"></div>
 			</form>
 			<div class="footer-hint">
-				由 <a href="https://github.com/cmliu/edgetunnel" target="_blank" rel="noopener">edgetunnel</a> 强力驱动
+				由 <a href="https://github.com/cmliu/edgetunnel" target="_blank" rel="noopener">pure-edgetunnel (基于 edgetunnel v2.1.20260722191426)</a> 强力驱动
 			</div>
 		</div>
 	</div>
@@ -16951,7 +16953,7 @@ function getAdminHTML() {
 
 					<div id="generatorSection" class="form-group hidden-section">
 						<label for="generatorURL">优选订阅生成器</label>
-						<input type="text" id="generatorURL" title="优选订阅生成器" placeholder="sub.2825688.xyz"
+						<input type="text" id="generatorURL" title="优选订阅生成器" placeholder="sub.example.com"
 							onchange="processGeneratorURL()" oninput="processGeneratorURL()">
 					</div>
 
@@ -17269,7 +17271,7 @@ function getAdminHTML() {
 						<div class="form-group">
 							<label for="proxyIP">PROXYIP</label>
 							<div class="input-wrapper">
-								<input type="text" id="proxyIP" title="PROXYIP" placeholder="proxyip.2825688.xyz"
+								<input type="text" id="proxyIP" title="PROXYIP" placeholder="proxyip.example.com"
 									onchange="processProxyIP()" oninput="processProxyIP()">
 								<div class="checkbox-group">
 									<input type="checkbox" id="autoProxy" title="启用自动获取: 使用默认内置的PROXYIP"
@@ -19992,18 +19994,18 @@ function getAdminHTML() {
 				const TLS_PORTS = [443, 2053, 2083, 2087, 2096, 8443];
 				const DETECT_ENDPOINTS = {
 					ipv4: [
-						"https://671F04**.bestcf.2825688.xyz",
-						"https://6CA2C0**.bestcf.2825688.xyz",
-						"https://BC7260**.bestcf.2825688.xyz",
-						"https://681000**.bestcf.2825688.xyz",
-						"https://681800**.bestcf.2825688.xyz",
-						"https://AC4000**.bestcf.2825688.xyz"
+						"https://671F04**.bestcf.example.com",
+						"https://6CA2C0**.bestcf.example.com",
+						"https://BC7260**.bestcf.example.com",
+						"https://681000**.bestcf.example.com",
+						"https://681800**.bestcf.example.com",
+						"https://AC4000**.bestcf.example.com"
 					],
 					ipv6: [
-						"https://2606-4700--**.bestcf.2825688.xyz",
-						"https://2606-4700--1000-**.bestcf.2825688.xyz",
-						"https://2606-4700--2000-**.bestcf.2825688.xyz",
-						"https://2606-4700--3000-**.bestcf.2825688.xyz"
+						"https://2606-4700--**.bestcf.example.com",
+						"https://2606-4700--1000-**.bestcf.example.com",
+						"https://2606-4700--2000-**.bestcf.example.com",
+						"https://2606-4700--3000-**.bestcf.example.com"
 					]
 				};
 				function expandWildcardEndpoints(endpoints) {
@@ -22127,7 +22129,7 @@ function getAdminHTML() {
 						? ipv4ToHexLabel(parsed.ip)
 						: parsed.ip.toLowerCase().replace(/:/g, "-");
 					const search = new URLSearchParams({ _t: String(Date.now()), ...params });
-					return \`https://\${label}.bestcf.2825688.xyz:\${parsed.port}/\${path}?\${search.toString()}\`;
+					return \`https://\${label}.bestcf.example.com:\${parsed.port}/\${path}?\${search.toString()}\`;
 				}
 
 				function ipv4ToHexLabel(ip) {
@@ -23095,7 +23097,7 @@ function getAdminHTML() {
 						</div>
 						<div class="auth-example-item">
 							<h4>优选订阅生成器</h4>
-							<pre>sub://sub.2825688.xyz#CM优选订阅</pre>
+							<pre>sub://sub.example.com#CM优选订阅</pre>
 						</div>
 					</div>
 
@@ -28437,7 +28439,7 @@ function getAdminHTML() {
 				const socketsVariantResult = randomizeSnippetLiteralOccurrences(dictionaryAppliedScript, 'cloudflare:sockets');
 				const proxyipVariantResult = randomizeSnippetLiteralOccurrences(
 					socketsVariantResult.code,
-					'proxyip.2825688.xyz',
+					'proxyip.example.com',
 					{ randomizeCase: true }
 				);
 				const finalScript = proxyipVariantResult.code;
@@ -28450,7 +28452,7 @@ function getAdminHTML() {
 				}
 				if (proxyipVariantResult.occurrences > 0) {
 					variantSummaries.push(
-						\`proxyip.2825688.xyz \${proxyipVariantResult.occurrences} 处 / \${proxyipVariantResult.changedLetters} 个大小写扰动 / \${proxyipVariantResult.escapedChars} 个 Unicode 转义\`
+						\`proxyip.example.com \${proxyipVariantResult.occurrences} 处 / \${proxyipVariantResult.changedLetters} 个大小写扰动 / \${proxyipVariantResult.escapedChars} 个 Unicode 转义\`
 					);
 				}
 
@@ -31277,7 +31279,7 @@ function getAdminHTML() {
 			const mirrorDomains = [
 				'https://github.cloudflare.com/raw.githubusercontent.com',
 				'https://github.edgetunnel.com/raw.githubusercontent.com',
-				'https://github.2825688.xyz/raw.githubusercontent.com',
+				'https://github.example.com/raw.githubusercontent.com',
 			];
 			const candidates = [{ url: originalUrl, label: '原始链接' }];
 
@@ -32015,7 +32017,7 @@ function getAdminHTML() {
 					parse: d => ({ ip: d.ip, loc: \`\${d.country_code || d.country || '未知'} \${d.connection?.asn ? 'AS'+d.connection.asn : ''} \${d.connection?.org || ''}\`.trim() })
 				},
 				{
-					url: \`https://api.2825688.xyz/api/ipinfo\`,
+					url: \`https://api.example.com/api/ipinfo\`,
 					parse: d => ({ ip: d.ip, loc: \`\${d.country_code || '未知'} \${d.asn || ''} \${d.as_name || ''}\`.trim() })
 				}
 			];
@@ -34607,7 +34609,7 @@ function getNoKVHTML() {
             </div>
             <span class="error-sub">请绑定 变量名称 为 <strong>KV</strong> 的 KV命名空间</span>
             <div class="footer-hint">
-                由 <a href="https://github.com/cmliu/edgetunnel" target="_blank" rel="noopener">edgetunnel</a> 强力驱动
+                由 <a href="https://github.com/cmliu/edgetunnel" target="_blank" rel="noopener">pure-edgetunnel (基于 edgetunnel v2.1.20260722191426)</a> 强力驱动
             </div>
         </div>
     </div>
@@ -35057,7 +35059,7 @@ function getNoADMINHTML() {
 			</div>
 			<span class="error-sub">请设置 变量名称 为 <strong>ADMIN</strong> 的环境变量</span>
 			<div class="footer-hint">
-				由 <a href="https://github.com/cmliu/edgetunnel" target="_blank" rel="noopener">edgetunnel</a> 强力驱动
+				由 <a href="https://github.com/cmliu/edgetunnel" target="_blank" rel="noopener">pure-edgetunnel (基于 edgetunnel v2.1.20260722191426)</a> 强力驱动
 			</div>
 		</div>
 	</div>
