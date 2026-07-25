@@ -14,6 +14,23 @@
 
 ---
 
+## 🖥️ 后台管理面板访问指南
+
+部署完成后，即可通过浏览器访问管理控制台：
+
+1. **访问路径**：
+   - **登录页面**：`https://你的域名/login` 或 `https://你的域名/admin`
+   - **示例**：如域名为 `sub.yourdomain.com`，则访问 `https://sub.yourdomain.com/login`。
+
+2. **登录密码**：
+   - 密码为你设置的环境变量 **`ADMIN`** 的值。
+
+3. **快捷订阅地址**：
+   - 登录后台后可直接一键复制节点与多客户端订阅；
+   - 或使用快捷订阅路径：`https://你的域名/KEY密钥`。
+
+---
+
 ## 📖 声明与鸣谢
 
 - 感谢原作者 [cmliu](https://github.com/cmliu) 及其开源项目 [edgetunnel](https://github.com/cmliu/edgetunnel) 提供的优秀核心基础。
