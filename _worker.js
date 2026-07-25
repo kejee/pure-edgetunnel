@@ -5301,6 +5301,7 @@ async function 读取config_JSON(env, hostname, userID, UA = "Mozilla/5.0", 重�
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
+			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 		}
 	} catch (error) {
 		console.error(`读取config_JSON出错: ${error.message}`);
@@ -29627,17 +29628,41 @@ function getAdminHTML() {
 
 		async function loadPathTemplatePresets() {
 			try {
-				const url = '';
-				const text = await fetchWithAutoMirror(url, '路径模板配置');
-				pathTemplatePresets = JSON.parse(text);
+				pathTemplatePresets = [
+					{
+						"项目名": "edgetunnel[默认路径配置]",
+						"提示消息": "已切换至默认路径配置。",
+						"路径模板": {
+							"PROXYIP": "proxyip={{IP:PORT}}",
+							"SOCKS5": { "全局": "socks5://{{IP:PORT}}", "标准": "socks5={{IP:PORT}}" },
+							"HTTP": { "全局": "http://{{IP:PORT}}", "标准": "http={{IP:PORT}}" }
+						}
+					},
+					{
+						"项目名": "EDtunnel[3K项目路径配置]",
+						"提示消息": "已切换至3K项目路径配置。",
+						"路径模板": {
+							"PROXYIP": "proxyip={{IP:PORT}}",
+							"SOCKS5": { "全局": "socks5://{{IP:PORT}}?globalproxy", "标准": "socks5://{{IP:PORT}}" },
+							"HTTP": { "全局": "http://{{IP:PORT}}?globalproxy", "标准": "http://{{IP:PORT}}" }
+						}
+					},
+					{
+						"项目名": "Cloudflare-proxy[老王项目路径配置]",
+						"提示消息": "注意！SOCKS5/HTTP 出站不支持非全局模式。",
+						"路径模板": {
+							"PROXYIP": "proxyip={{IP:PORT}}",
+							"SOCKS5": { "全局": "proxyip=socks5://{{IP:PORT}}", "标准": "proxyip=socks5://{{IP:PORT}}" },
+							"HTTP": { "全局": "proxyip=http://{{IP:PORT}}", "标准": "proxyip=http://{{IP:PORT}}" }
+						}
+					}
+				];
 
 				const select = document.getElementById('presetTemplateSelect');
-				// 清除除"自定义"外的所有选项
 				while (select.options.length > 1) {
 					select.remove(1);
 				}
 
-				// 添加预设模板选项
 				pathTemplatePresets.forEach(preset => {
 					const option = document.createElement('option');
 					option.value = preset.项目名;
@@ -29646,7 +29671,6 @@ function getAdminHTML() {
 				});
 			} catch (error) {
 				console.error('加载路径模板预设失败:', error);
-				showToast('加载预设模板失败: ' + error.message, 'error');
 			}
 		}
 
