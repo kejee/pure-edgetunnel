@@ -5295,6 +5295,7 @@ async function 读取config_JSON(env, hostname, userID, UA = "Mozilla/5.0", 重�
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
+			if (config_JSON?.订阅转换配置?.SUBAPI?.includes('cmliu')) config_JSON.订阅转换配置.SUBAPI = null;
 		}
 	} catch (error) {
 		console.error(`读取config_JSON出错: ${error.message}`);
@@ -32007,8 +32008,8 @@ function getAdminHTML() {
 			// API 配置：URL + 字段映射
 			const apis = [
 				{
-					url: \`https://api.ipapi.is\`,
-					parse: d => ({ ip: d.ip, loc: \`\${d.location?.country_code || '未知'} AS\${d.asn?.asn || ''} \${d.asn?.org || ''}\`.trim() })
+					url: \`https://ipwho.is/\`,
+					parse: d => ({ ip: d.ip, loc: \`\${d.country_code || d.country || '未知'} \${d.connection?.asn ? 'AS'+d.connection.asn : ''} \${d.connection?.org || ''}\`.trim() })
 				},
 				{
 					url: \`https://api.2825688.xyz/api/ipinfo\`,
@@ -32196,8 +32197,8 @@ function getAdminHTML() {
 
 			const timestamp = Date.now();
 			const endpoints = [
-				{ url: 'https://ipv4.cloudflare.com' },
-				{ url: 'https://ipv6.cloudflare.com' }
+				{ url: '/admin/cf.json' },
+				{ url: 'https://ipwho.is/' }
 			];
 
 			try {
